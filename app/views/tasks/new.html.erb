@@ -1,7 +1,3 @@
  <h1>task新規作成ページ</h1>
-        <%= form_for(@tasks) do |t| %>
-         <%= t.label :content, 'tasks' %>
-        <%= t.text_field :content %>
-        <%= t.submit '新規' %>
-        <% end %>
+        <%= render 'form', tasks: @tasks %>
         <%= link_to '一覧に戻る', tasks_path %>
