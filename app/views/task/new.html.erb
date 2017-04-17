@@ -1,0 +1,7 @@
+ <h1>task新規作成ページ</h1>
+        <%= form_for(@task) do |t| %>
+         <%= t.label :content, 'task' %>
+        <%= t.text_field :content %>
+        <%= t.submit '新規' %>
+        <% end %>
+        <%= link_to '一覧に戻る', tasks_path %>
