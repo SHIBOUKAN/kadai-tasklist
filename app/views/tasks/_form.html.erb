@@ -1,13 +1,13 @@
 <%= form_for(tasks) do |f| %>
-<% if message.errors.any? %>
+<% if tasks.errors.any? %>
 
     <div id="error_explanation">
       <ul>
         
-<% message.errors.full_messages.each do |message| %>
+<% tasks.errors.full_messages.each do |tasks| %>
 
           <li>
-<%= message %>
+<%= tasks %>
 </li>
         
 <% end %>
@@ -19,7 +19,7 @@
 <%= f.label :status, '状態' %>
 
   
-<%= f.text_field :title %>
+<%= f.text_field :status %>
 
   
 <%= f.label :content, 'タスク' %>
