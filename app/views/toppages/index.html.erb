@@ -5,12 +5,15 @@
 </p>
   <div class="row">
     <aside class="col-md-4">
+      <!--
       <%= form_for(@task) do |f| %>
         <div class="form-group">
           <%= f.text_area :content, class: 'form-control', rows: 5 %>
         </div>
         <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
       <% end %>
+      -->
+      <%= render 'tasks/form', task: @task, user: @user %>
     </aside>
     <div class="col-xs-8">
       <%= render 'tasks/tasks', tasks: @tasks, user: @user %>

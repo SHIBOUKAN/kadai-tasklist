@@ -7,13 +7,17 @@
       </div>
       <div class="media-body">
         <div>
-          <%= link_to user.name, user_path(user) %> <span class="text-muted">posted at <%= task.created_at %></span>
+          <%= link_to user.name, user_path(user) %>
+          <span class="text-muted">posted at <%= task.created_at %></span>
         </div>
         <div>
           <p><%= task.content %></p>
+          <p>status: <%= task.status %></p>
         </div>
         <div>
           <% if current_user == task.user %>
+            <%#= link_to "Edit", task, method: :edit, class: 'btn btn-primary btn-xs' %>
+            <%= link_to 'Edit', edit_task_path(task), class: "btn btn-default btn-xs" %>
             <%= link_to "Delete", task, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
         </div>

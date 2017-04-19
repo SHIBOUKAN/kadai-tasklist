@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:destroy,:edit,:update]
 
   def create
     @task = current_user.tasks.build(task_params)
@@ -19,11 +19,27 @@ class TasksController < ApplicationController
     flash[:success] = 'メッセージを削除しました。'
     redirect_back(fallback_location: root_path)
   end
+  
+  def edit
+    
+  end
+  
+  def update
+     @task.update(task_params)
+    if @task.save
+      flash[:success] = 'メッセージを更新しました。'
+      redirect_to root_url
+    else
+      @tasks = current_user.tasks.order('created_at DESC').page(params[:page])
+      flash.now[:danger] = 'メッセージの更新に失敗しました。'
+      render 'toppages/index'
+    end
+  end
 
   private
 
   def task_params
-    params.require(:task).permit(:content)
+    params.require(:task).permit(:content,:status)
   end
 
   def correct_user
